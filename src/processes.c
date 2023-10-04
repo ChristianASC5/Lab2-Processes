@@ -4,6 +4,7 @@
 #include <time.h>
 #include <unistd.h>
 #include <sys/types.h>
+#include <sys/wait.h>
 
 #define BUF_SIZE 100
 
@@ -41,7 +42,7 @@ void ChildProcess(void)
      int num = (rand() % 30) + 1;
      char buf[BUF_SIZE];
 
-     for (int i = 0; i < 3; i++)
+     for (int i = 0; i < num; i++)
      {
           sprintf(buf, "Child Pid: %d is going to sleep!\n", getpid());
           write(1, buf, strlen(buf));
